@@ -132,6 +132,9 @@ int main(void)
 {
 	int sleep_ms, i;
 
+	/* clean semi hosting output */
+	printf("\f");
+
 	/*
 	 * System initializations.
 	 * - HAL initialization, this also initializes the configured device

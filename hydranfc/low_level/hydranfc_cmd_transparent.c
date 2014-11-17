@@ -17,41 +17,39 @@ static struct exception hydraNfcLowLevelException;
 void low_setRF_Protocol(uint8_t protocol)
 {
 	switch(protocol)	{
-		case RF_PROTOCOL_ISO14443A:
-			printf("Calling low_setRF_Protocol_ISO14443A\n");
-			low_setRF_Protocol_ISO14443A();
-			break;
-/*		case RF_PROTOCOL_ISO14443B:
-			low_setRF_Protocol_ISO14443B();
-			break;
-		case RF_PROTOCOL_ISO15693:
-			low_setRF_Protocol_ISO15693();
-			break; */
-		case RF_PROTOCOL_NONE:
-			printf("Calling low_setRF_Protocol_Off\n");
-			low_setRF_Protocol_Off();
-			break;
-		default:
-			hydraNfcLowLevelException.errorCode = 0x01;
-			hydraNfcLowLevelException.errorMessage = "low_setRF_Protocol Error- Unsupported Protocol";
-			Throw hydraNfcLowLevelException;
+	case RF_PROTOCOL_ISO14443A:
+		printf("Calling low_setRF_Protocol_ISO14443A\n");
+		low_setRF_Protocol_ISO14443A();
+		break;
+		/*		case RF_PROTOCOL_ISO14443B:
+					low_setRF_Protocol_ISO14443B();
+					break;
+				case RF_PROTOCOL_ISO15693:
+					low_setRF_Protocol_ISO15693();
+					break; */
+	case RF_PROTOCOL_NONE:
+		printf("Calling low_setRF_Protocol_Off\n");
+		low_setRF_Protocol_Off();
+		break;
+	default:
+		hydraNfcLowLevelException.errorCode = 0x01;
+		hydraNfcLowLevelException.errorMessage = "low_setRF_Protocol Error- Unsupported Protocol";
+		Throw hydraNfcLowLevelException;
 	}
 }
 
 void low_setRF_Protocol_Off()
 {
-	printf("Turning off RF\n");
 	Trf797xTurnRfOff();
 }
 
 void low_setRF_Protocol_ISO14443A()
 {
 	int init_ms;
-	uint8_t fifo_size;
 	uint8_t data_buf[5];
 
-	/* Test ISO14443-A/Mifare read UID */
 	init_ms = Trf797xInitialSettings();
+	printf("low_setRF_Protocol_ISO14443A - init_ms: %ld ms\n", init_ms);
 	Trf797xReset();
 
 	/* Write Modulator and SYS_CLK Control Register (0x09) (13.56Mhz SYS_CLK and default Clock 13.56Mhz)) */
@@ -81,6 +79,6 @@ void low_setRF_Protocol_ISO14443A()
 	/* Read back (Chip Status Control Register (0x00) shall be set to RF ON */
 	data_buf[0] = CHIP_STATE_CONTROL;
 	Trf797xReadSingle(data_buf, 1);
-	return (uint32_t)data_buf[0];
+	//printf("Chip Status Control Register (0x00): 0x%08lX\n", (uint32_t)data_buf[0]);
 
 }

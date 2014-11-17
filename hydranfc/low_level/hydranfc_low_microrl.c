@@ -125,13 +125,13 @@ void cmd_nfc_set_protocol(t_hydra_console *con, int argc, const char* const* arg
 
 	// Test if parameters are passed
 	if (!strcmp("14443A", argv[1]))
-			selectedProtocol = RF_PROTOCOL_ISO14443A;
+		selectedProtocol = RF_PROTOCOL_ISO14443A;
 
 	if (!strcmp("14443B", argv[1]))
-			selectedProtocol = RF_PROTOCOL_ISO14443B;
+		selectedProtocol = RF_PROTOCOL_ISO14443B;
 
 	if (!strcmp("15693", argv[1]))
-			selectedProtocol = RF_PROTOCOL_ISO15693;
+		selectedProtocol = RF_PROTOCOL_ISO15693;
 
 	if (!strcmp("OFF", argv[1]))
 		selectedProtocol = RF_PROTOCOL_NONE;

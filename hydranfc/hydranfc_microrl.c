@@ -186,6 +186,7 @@ void hydranfc_sigint(t_hydra_console *con)
 void cmd_microrl_select_nfc_low_level(t_hydra_console *con, int argc, const char* const* argv)
 {
 	(void)argc;
-	(void)argv;cprintf(con, "Entering NFC Low level mode\r\n");
+	(void)argv;
+	cprintf(con, "Entering NFC Low level mode\r\n");
 	nfc_select_low_selected = TRUE;
 }
