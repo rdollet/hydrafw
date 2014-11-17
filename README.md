@@ -14,8 +14,12 @@ For more details on HydraBus Hardware and Firmware see also: https://github.com/
 
 For more details on HydraNFC Hardware see: https://github.com/bvernoux/hydranfc
 
+For HydraFW information see Wiki: https://github.com/bvernoux/hydrafw/wiki
+
 For hydrafw usage with VT100 Terminal see wiki
 https://github.com/bvernoux/hydrafw/wiki/HydraFW-commands
+
+If you want to help on this project see the [Coding Styles](https://github.com/bvernoux/hydrafw/blob/master/CODING_STYLE.md), [Wiki](https://github.com/bvernoux/hydrafw/wiki) & [Wiki Task List](https://github.com/bvernoux/hydrafw/wiki/Task-List) 
 
 ##How to build, flash and use hydrafw on Windows:
 
